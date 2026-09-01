@@ -1,4 +1,4 @@
-"""Minimal AX.25 (v2.0/2.2, mod-8) frame decoder.
+"""Minimal AX.25 (v2.0/2.2, mod-8) frame decoder for channel_monitor_gui.py.
 
 Decodes just enough of the address/control/PID header to show
 source/destination/digipeater path, frame type, and protocol ID -- not a

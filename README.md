@@ -57,3 +57,15 @@ the packet bridge and Pat -- all from one window.
 ```bash
 scripts/start_kiss_gui.sh
 ```
+
+### Channel monitor GUI
+
+A live view of AX.25 traffic heard by the TNC -- decodes each frame
+(source/dest callsigns, digipeater path, frame type, PID) into a table,
+with the full header and hex/ASCII payload for whichever row is
+selected. Opens its own direct connection to the TNC, so stop the KISS
+bridge first (the TNC only allows one Bluetooth connection at a time).
+
+```bash
+scripts/start_channel_monitor_gui.sh
+```

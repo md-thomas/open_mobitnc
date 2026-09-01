@@ -1,6 +1,10 @@
-"""Shared helpers for open_mobitnc's kiss_gui.py: remembered-device
-persistence, BLE scan-line parsing, and OS-level process/Bluetooth
-status checks.
+"""Shared helpers for open_mobitnc's Tkinter/CustomTkinter GUIs
+(kiss_gui.py, channel_monitor_gui.py): remembered-device persistence,
+BLE scan-line parsing, and OS-level process/Bluetooth status checks.
+
+Kept separate from any one GUI so both apps remember the same device
+(same state file) and share the same already-debugged logic rather than
+diverging copies.
 """
 
 import json
@@ -9,7 +13,31 @@ import subprocess
 from pathlib import Path
 
 DEVICE_STATE_PATH = Path.home() / ".cache" / "mobitnc-gui-device.json"
+UI_STATE_PATH = Path.home() / ".cache" / "mobitnc-gui-layout.json"
 MAC_RE = re.compile(r"^([0-9A-Fa-f]{2}(?::[0-9A-Fa-f]{2}){5})\s*(.*)$")
+
+
+def load_ui_state(app: str) -> dict:
+    """Per-app UI layout (window geometry, pane sizes, ...), keyed by an
+    app name so kiss_gui.py and channel_monitor_gui.py can share one
+    file without clobbering each other's saved layout."""
+    try:
+        return json.loads(UI_STATE_PATH.read_text()).get(app, {})
+    except Exception:
+        return {}
+
+
+def save_ui_state(app: str, state: dict) -> None:
+    try:
+        UI_STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            data = json.loads(UI_STATE_PATH.read_text())
+        except Exception:
+            data = {}
+        data[app] = state
+        UI_STATE_PATH.write_text(json.dumps(data, indent=2))
+    except Exception:
+        pass
 
 
 def pgrep(pattern: str) -> list[int]:
