@@ -47,3 +47,13 @@ scripts/stop_radio.sh
 `~/.cache/mobitnc-bridge.log`, pid at `~/.cache/mobitnc-bridge.pid`),
 waits for the KISS pty to appear, then runs `sudo kissattach` in the
 foreground so you only enter your password once.
+
+### KISS bridge control GUI
+
+A CustomTkinter desktop app for the connection lifecycle: scan for and
+remember the TNC's Bluetooth device, connect/disconnect, and start/stop
+the packet bridge and Pat -- all from one window.
+
+```bash
+scripts/start_kiss_gui.sh
+```
