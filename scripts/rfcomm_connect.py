@@ -15,7 +15,7 @@ import socket
 import subprocess
 import sys
 
-KNOWN_CHANNELS = (6, 1)  # TNC3 default, then TNC4 default
+KNOWN_CHANNELS = (1, 6)  # TNC4 default, then TNC3 default
 CONNECT_TIMEOUT_SECONDS = 5.0
 SDP_TIMEOUT_SECONDS = 10.0
 

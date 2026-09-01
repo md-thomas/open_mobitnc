@@ -9,4 +9,4 @@ override per-invocation with the MOBITNC_ADDR environment variable.
 
 import os
 
-DEFAULT_DEVICE_UUID = os.environ.get("MOBITNC_ADDR", "")
+DEFAULT_DEVICE_UUID = os.environ.get("MOBITNC_ADDR", "34:81:F4:AA:8B:2A")
