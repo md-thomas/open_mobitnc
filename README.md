@@ -9,6 +9,9 @@ directly over its classic-Bluetooth SPP serial link -- no vendor command
 protocol to translate, just bytes relayed between a pty and the RFCOMM
 socket.
 
+## Testing 
+This has been tested on: Ubuntu 25.10 6.17.0-41-generic Python 3.13.7 BTech UV Pro FW: 0.9.2-3
+
 ## Install/Setup
 
 ```bash
